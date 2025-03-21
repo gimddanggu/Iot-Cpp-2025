@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+/* 템플릿 매개변수 */
+
+template <typename T, int sz>
+class CTest {
+private:
+	T ary[sz];
+public:
+	T& operator[](int idx) {
+		if (idx < 0 || idx >= sz) {
+			cout << "Error" << endl;
+			exit(1);
+		}
+		return ary[idx];
+	}
+	void getData() {
+		for (int i = 0; i < sz; i++) {
+			cout << ary[i] << endl;
+		}
+	}
+};
+
+int main(void)
+{
+	CTest<int, 5> obj;
+	obj.operator[](0) = 10;
+	obj[1] = 20;
+	obj[2] = 30;
+	obj[3] = 40;
+	obj[4] = 50;
+	cout << obj[0] << endl;
+	return 0;
+}
